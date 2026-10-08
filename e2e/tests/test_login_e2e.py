@@ -102,3 +102,8 @@ def test_tc15_password_contains_spaces_only(login_page):
 def test_tc16_both_username_password_spaces_only(login_page):
     page = login_page.open()
     invalid_login_should_stay_on_login(page, "   ", "   ")
+
+@pytest.mark.case(id="TC17", title="Invalid username and invalid password", username="invalid-user", password="invalid-password", expected="Invalid credentials are rejected")
+def test_tc17_invalid_username_and_invalid_password(login_page):
+    page = login_page.open()
+    invalid_login_should_stay_on_login(page, "invalid-user", "invalid-password")
