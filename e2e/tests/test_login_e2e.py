@@ -127,3 +127,8 @@ def test_tc20_one_character_password(login_page):
 def test_tc21_very_long_username(login_page):
     page = login_page.open()
     invalid_login_should_stay_on_login(page, "u" * 256, "wrong-password")
+
+@pytest.mark.case(id="TC22", title="Very long password", username="wrong-user", password="long password", expected="Very long password is handled without breaking the form")
+def test_tc22_very_long_password(login_page):
+    page = login_page.open()
+    invalid_login_should_stay_on_login(page, "wrong-user", "p" * 256)
