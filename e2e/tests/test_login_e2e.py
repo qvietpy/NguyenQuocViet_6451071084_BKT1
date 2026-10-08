@@ -31,3 +31,8 @@ def test_tc02_username_field_is_visible(login_page):
 def test_tc03_password_field_is_visible(login_page):
     page = login_page.open()
     assert page.password_element().is_displayed()
+
+@pytest.mark.case(id="TC04", title="Password input type is password", username="N/A", password="N/A", expected="Password input masks typed text")
+def test_tc04_password_input_type_is_password(login_page):
+    page = login_page.open()
+    assert page.password_element().get_attribute("type") == "password"
