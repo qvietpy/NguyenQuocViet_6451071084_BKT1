@@ -21,3 +21,8 @@ def test_tc01_login_page_loads(login_page):
     page = login_page.open()
     assert page.on_login_page()
     assert page.form_is_usable()
+
+@pytest.mark.case(id="TC02", title="Username field is visible", username="N/A", password="N/A", expected="Username input is visible")
+def test_tc02_username_field_is_visible(login_page):
+    page = login_page.open()
+    assert page.username_element().is_displayed()
