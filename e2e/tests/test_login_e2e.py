@@ -112,3 +112,8 @@ def test_tc17_invalid_username_and_invalid_password(login_page):
 def test_tc18_format_like_username_wrong_password(login_page):
     page = login_page.open()
     invalid_login_should_stay_on_login(page, "2021000000", "wrong-password")
+
+@pytest.mark.case(id="TC19", title="One-character username", username="a", password="wrong-password", expected="One-character username is rejected")
+def test_tc19_one_character_username(login_page):
+    page = login_page.open()
+    invalid_login_should_stay_on_login(page, "a", "wrong-password")
