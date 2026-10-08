@@ -182,3 +182,11 @@ def test_tc31_vietnamese_unicode_username(login_page):
 def test_tc32_vietnamese_unicode_password(login_page):
     page = login_page.open()
     invalid_login_should_stay_on_login(page, "wrong-user", "mật-khẩu-sai")
+
+@pytest.mark.case(id="TC33", title="Submit login using Enter", username="invalid-user", password="invalid-password", expected="Enter submits invalid credentials and stays on login page")
+def test_tc33_submit_login_using_enter(login_page):
+    page = login_page.open()
+    page.set_credentials("invalid-user", "invalid-password")
+    page.submit_with_enter()
+    assert page.on_login_page()
+    assert page.form_is_usable()
