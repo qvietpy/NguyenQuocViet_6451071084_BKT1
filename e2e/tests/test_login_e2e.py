@@ -240,3 +240,11 @@ def test_tc40_valid_username_and_valid_password(login_page):
     page = login_page.open()
     page.login(valid_username(), valid_password())
     assert page.login_successful()
+
+@pytest.mark.case(id="TC41", title="E-mail UTC login navigation", username="N/A", password="N/A", expected="E-mail UTC login option navigates away from the login form")
+def test_tc41_email_utc_login_navigation(login_page):
+    page = login_page.open()
+    old_url = page.current_url()
+    assert page.email_utc_login_visible()
+    page.click_email_utc_login()
+    assert page.wait_url_change(old_url)
