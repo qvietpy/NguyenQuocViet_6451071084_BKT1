@@ -152,3 +152,8 @@ def test_tc25_leading_whitespace_password(login_page):
 def test_tc26_trailing_whitespace_password(login_page):
     page = login_page.open()
     invalid_login_should_stay_on_login(page, "wrong-user", "wrong-password ")
+
+@pytest.mark.case(id="TC27", title="Numeric-only username", username="123456789", password="wrong-password", expected="Numeric-only invalid credentials are rejected")
+def test_tc27_numeric_only_username(login_page):
+    page = login_page.open()
+    invalid_login_should_stay_on_login(page, "123456789", "wrong-password")
