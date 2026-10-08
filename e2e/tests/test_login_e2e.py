@@ -248,3 +248,8 @@ def test_tc41_email_utc_login_navigation(login_page):
     assert page.email_utc_login_visible()
     page.click_email_utc_login()
     assert page.wait_url_change(old_url)
+
+@pytest.mark.case(id="TC42", title="Remember-me default state", username="N/A", password="N/A", expected="Remember-me checkbox exposes a boolean default state")
+def test_tc42_remember_me_default_state(login_page):
+    page = login_page.open()
+    assert isinstance(page.remember_selected(), bool)
