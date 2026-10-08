@@ -177,3 +177,8 @@ def test_tc30_username_with_underscore_and_hyphen(login_page):
 def test_tc31_vietnamese_unicode_username(login_page):
     page = login_page.open()
     invalid_login_should_stay_on_login(page, "người-dùng", "wrong-password")
+
+@pytest.mark.case(id="TC32", title="Vietnamese Unicode password", username="wrong-user", password="mật-khẩu-sai", expected="Unicode password is handled without breaking the form")
+def test_tc32_vietnamese_unicode_password(login_page):
+    page = login_page.open()
+    invalid_login_should_stay_on_login(page, "wrong-user", "mật-khẩu-sai")
