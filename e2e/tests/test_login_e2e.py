@@ -202,3 +202,11 @@ def test_tc35_form_remains_usable_after_failed_login(login_page):
     page = login_page.open()
     page.login("invalid-user", "invalid-password")
     assert page.form_is_usable()
+
+@pytest.mark.case(id="TC36", title="Refresh after failed login", username="invalid-user", password="invalid-password", expected="Refreshed login page remains usable")
+def test_tc36_refresh_after_failed_login(login_page):
+    page = login_page.open()
+    page.login("invalid-user", "invalid-password")
+    page.refresh()
+    assert page.on_login_page()
+    assert page.form_is_usable()
