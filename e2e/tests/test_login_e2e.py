@@ -167,3 +167,8 @@ def test_tc28_alphabetic_only_username(login_page):
 def test_tc29_username_with_dot(login_page):
     page = login_page.open()
     invalid_login_should_stay_on_login(page, "invalid.user", "wrong-password")
+
+@pytest.mark.case(id="TC30", title="Username with underscore and hyphen", username="invalid_user-name", password="wrong-password", expected="Underscore and hyphen username is handled and rejected")
+def test_tc30_username_with_underscore_and_hyphen(login_page):
+    page = login_page.open()
+    invalid_login_should_stay_on_login(page, "invalid_user-name", "wrong-password")
