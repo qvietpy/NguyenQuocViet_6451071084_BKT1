@@ -77,3 +77,8 @@ def test_tc11_submit_empty_username_and_password(login_page):
     page.click_login()
     assert page.on_login_page()
     assert page.form_is_usable()
+
+@pytest.mark.case(id="TC12", title="Submit empty username", username="", password="wrong-password", expected="Form remains on login page")
+def test_tc12_submit_empty_username(login_page):
+    page = login_page.open()
+    invalid_login_should_stay_on_login(page, "", "wrong-password")
