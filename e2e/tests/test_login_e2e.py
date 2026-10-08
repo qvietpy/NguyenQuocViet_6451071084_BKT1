@@ -107,3 +107,8 @@ def test_tc16_both_username_password_spaces_only(login_page):
 def test_tc17_invalid_username_and_invalid_password(login_page):
     page = login_page.open()
     invalid_login_should_stay_on_login(page, "invalid-user", "invalid-password")
+
+@pytest.mark.case(id="TC18", title="Format-like username and wrong password", username="2021000000", password="wrong-password", expected="Format-like invalid credentials are rejected")
+def test_tc18_format_like_username_wrong_password(login_page):
+    page = login_page.open()
+    invalid_login_should_stay_on_login(page, "2021000000", "wrong-password")
