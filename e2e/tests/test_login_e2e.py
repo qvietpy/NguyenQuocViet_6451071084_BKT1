@@ -196,3 +196,9 @@ def test_tc34_invalid_login_displays_error_message(login_page):
     page = login_page.open()
     page.login("invalid-user", "invalid-password")
     assert page.error_visible()
+
+@pytest.mark.case(id="TC35", title="Form remains usable after failed login", username="invalid-user", password="invalid-password", expected="Form remains usable after failed login")
+def test_tc35_form_remains_usable_after_failed_login(login_page):
+    page = login_page.open()
+    page.login("invalid-user", "invalid-password")
+    assert page.form_is_usable()
