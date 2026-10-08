@@ -82,3 +82,8 @@ def test_tc11_submit_empty_username_and_password(login_page):
 def test_tc12_submit_empty_username(login_page):
     page = login_page.open()
     invalid_login_should_stay_on_login(page, "", "wrong-password")
+
+@pytest.mark.case(id="TC13", title="Submit empty password", username="wrong-user", password="", expected="Form remains on login page")
+def test_tc13_submit_empty_password(login_page):
+    page = login_page.open()
+    invalid_login_should_stay_on_login(page, "wrong-user", "")
