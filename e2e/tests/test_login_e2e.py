@@ -58,3 +58,9 @@ def test_tc08_password_field_accepts_text(login_page):
     page = login_page.open()
     page.enter_password("SamplePassword")
     assert page.password_value() == "SamplePassword"
+
+@pytest.mark.case(id="TC09", title="Username can be cleared", username="student01", password="N/A", expected="Username field becomes empty after clear")
+def test_tc09_username_can_be_cleared(login_page):
+    page = login_page.open()
+    page.enter_username("student01").clear(page.USERNAME)
+    assert page.username_value() == ""
