@@ -162,3 +162,8 @@ def test_tc27_numeric_only_username(login_page):
 def test_tc28_alphabetic_only_username(login_page):
     page = login_page.open()
     invalid_login_should_stay_on_login(page, "abcdef", "wrong-password")
+
+@pytest.mark.case(id="TC29", title="Username with dot", username="invalid.user", password="wrong-password", expected="Dot username is handled and rejected")
+def test_tc29_username_with_dot(login_page):
+    page = login_page.open()
+    invalid_login_should_stay_on_login(page, "invalid.user", "wrong-password")
