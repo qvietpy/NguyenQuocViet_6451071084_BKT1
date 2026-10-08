@@ -1,5 +1,4 @@
 import platform
-import shutil
 import time
 from datetime import datetime
 from pathlib import Path
@@ -180,10 +179,6 @@ def pytest_sessionfinish(session, exitstatus):
     _write_results_sheet(workbook)
     _write_summary_sheet(workbook, elapsed)
 
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    report_path = REPORT_DIR / f"test_report_{timestamp}.xlsx"
     latest_path = REPORT_DIR / "latest_test_report.xlsx"
-    workbook.save(report_path)
-    shutil.copyfile(report_path, latest_path)
-    print(f"\nExcel report generated: {report_path}")
-    print(f"Latest report updated: {latest_path}")
+    workbook.save(latest_path)
+    print(f"\nExcel report generated: {latest_path}")
