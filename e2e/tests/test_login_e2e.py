@@ -41,3 +41,8 @@ def test_tc04_password_input_type_is_password(login_page):
 def test_tc05_login_button_is_visible(login_page):
     page = login_page.open()
     assert page.login_button().is_displayed()
+
+@pytest.mark.case(id="TC06", title="Login button is enabled", username="N/A", password="N/A", expected="Login button is enabled")
+def test_tc06_login_button_is_enabled(login_page):
+    page = login_page.open()
+    assert page.login_button().is_enabled()
