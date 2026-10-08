@@ -46,3 +46,9 @@ def test_tc05_login_button_is_visible(login_page):
 def test_tc06_login_button_is_enabled(login_page):
     page = login_page.open()
     assert page.login_button().is_enabled()
+
+@pytest.mark.case(id="TC07", title="Username field accepts text", username="student01", password="N/A", expected="Username value matches typed text")
+def test_tc07_username_field_accepts_text(login_page):
+    page = login_page.open()
+    page.enter_username("student01")
+    assert page.username_value() == "student01"
