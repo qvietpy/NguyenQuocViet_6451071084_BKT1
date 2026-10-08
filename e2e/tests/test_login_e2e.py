@@ -225,3 +225,12 @@ def test_tc38_remember_me_control_can_be_toggled(login_page):
     before = page.remember_selected()
     page.toggle_remember()
     assert page.remember_selected() != before
+
+@pytest.mark.case(id="TC39", title="Forgot-password navigation", username="N/A", password="N/A", expected="Forgot-password link changes URL")
+def test_tc39_forgot_password_navigation(login_page):
+    page = login_page.open()
+    old_url = page.current_url()
+    assert page.forgot_password_visible()
+    page.click_forgot_password()
+    assert page.wait_url_change(old_url)
+    assert "getpass" in page.current_url().lower()
