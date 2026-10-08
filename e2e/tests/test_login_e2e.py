@@ -218,3 +218,10 @@ def test_tc37_two_consecutive_failed_login_attempts(login_page):
     page.login("invalid-user-2", "invalid-password-2")
     assert page.on_login_page()
     assert page.form_is_usable()
+
+@pytest.mark.case(id="TC38", title="Remember-me control can be toggled", username="N/A", password="N/A", expected="Remember-me selected state changes after clicking label")
+def test_tc38_remember_me_control_can_be_toggled(login_page):
+    page = login_page.open()
+    before = page.remember_selected()
+    page.toggle_remember()
+    assert page.remember_selected() != before
