@@ -92,3 +92,8 @@ def test_tc13_submit_empty_password(login_page):
 def test_tc14_username_contains_spaces_only(login_page):
     page = login_page.open()
     invalid_login_should_stay_on_login(page, "   ", "wrong-password")
+
+@pytest.mark.case(id="TC15", title="Password contains spaces only", username="wrong-user", password="   ", expected="Spaces-only password is not accepted")
+def test_tc15_password_contains_spaces_only(login_page):
+    page = login_page.open()
+    invalid_login_should_stay_on_login(page, "wrong-user", "   ")
