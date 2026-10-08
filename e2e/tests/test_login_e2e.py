@@ -147,3 +147,8 @@ def test_tc24_trailing_whitespace_username(login_page):
 def test_tc25_leading_whitespace_password(login_page):
     page = login_page.open()
     invalid_login_should_stay_on_login(page, "wrong-user", " wrong-password")
+
+@pytest.mark.case(id="TC26", title="Trailing whitespace password", username="wrong-user", password="wrong-password ", expected="Trailing-whitespace password is rejected")
+def test_tc26_trailing_whitespace_password(login_page):
+    page = login_page.open()
+    invalid_login_should_stay_on_login(page, "wrong-user", "wrong-password ")
