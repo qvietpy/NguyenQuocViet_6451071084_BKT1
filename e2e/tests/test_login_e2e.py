@@ -70,3 +70,10 @@ def test_tc10_password_can_be_cleared(login_page):
     page = login_page.open()
     page.enter_password("SamplePassword").clear(page.PASSWORD)
     assert page.password_value() == ""
+
+@pytest.mark.case(id="TC11", title="Submit empty username and password", username="", password="", expected="Form remains usable on login page")
+def test_tc11_submit_empty_username_and_password(login_page):
+    page = login_page.open()
+    page.click_login()
+    assert page.on_login_page()
+    assert page.form_is_usable()
