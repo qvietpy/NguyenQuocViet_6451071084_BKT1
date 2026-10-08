@@ -52,3 +52,9 @@ def test_tc07_username_field_accepts_text(login_page):
     page = login_page.open()
     page.enter_username("student01")
     assert page.username_value() == "student01"
+
+@pytest.mark.case(id="TC08", title="Password field accepts text", username="N/A", password="SamplePassword", expected="Password value matches typed text")
+def test_tc08_password_field_accepts_text(login_page):
+    page = login_page.open()
+    page.enter_password("SamplePassword")
+    assert page.password_value() == "SamplePassword"
