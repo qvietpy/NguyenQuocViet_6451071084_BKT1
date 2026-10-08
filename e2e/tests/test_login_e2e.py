@@ -210,3 +210,11 @@ def test_tc36_refresh_after_failed_login(login_page):
     page.refresh()
     assert page.on_login_page()
     assert page.form_is_usable()
+
+@pytest.mark.case(id="TC37", title="Two consecutive failed login attempts", username="invalid-user", password="invalid-password", expected="Two failed attempts keep the form usable")
+def test_tc37_two_consecutive_failed_login_attempts(login_page):
+    page = login_page.open()
+    page.login("invalid-user", "invalid-password")
+    page.login("invalid-user-2", "invalid-password-2")
+    assert page.on_login_page()
+    assert page.form_is_usable()
