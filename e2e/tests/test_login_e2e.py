@@ -234,3 +234,9 @@ def test_tc39_forgot_password_navigation(login_page):
     page.click_forgot_password()
     assert page.wait_url_change(old_url)
     assert "getpass" in page.current_url().lower()
+
+@pytest.mark.case(id="TC40", title="Valid username and valid password", username="VALID_USERNAME", password="VALID_PASSWORD", expected="Valid credentials leave the login page")
+def test_tc40_valid_username_and_valid_password(login_page):
+    page = login_page.open()
+    page.login(valid_username(), valid_password())
+    assert page.login_successful()
