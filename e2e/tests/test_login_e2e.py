@@ -190,3 +190,9 @@ def test_tc33_submit_login_using_enter(login_page):
     page.submit_with_enter()
     assert page.on_login_page()
     assert page.form_is_usable()
+
+@pytest.mark.case(id="TC34", title="Invalid login displays error message", username="invalid-user", password="invalid-password", expected="Invalid login error message is displayed")
+def test_tc34_invalid_login_displays_error_message(login_page):
+    page = login_page.open()
+    page.login("invalid-user", "invalid-password")
+    assert page.error_visible()
